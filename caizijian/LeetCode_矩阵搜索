@@ -1,0 +1,74 @@
+/************************************************************
+编写一个高效的算法来搜索 m x n 矩阵 matrix 中的一个目标值 target。该矩阵具有以下特性：
+
+每行的元素从左到右升序排列。
+每列的元素从上到下升序排列。
+示例:
+
+现有矩阵 matrix 如下：
+[
+  [1,   4,  7, 11, 15],
+  [2,   5,  8, 12, 19],
+  [3,   6,  9, 16, 22],
+  [10, 13, 14, 17, 24],
+  [18, 21, 23, 26, 30]
+]
+给定 target = 5，返回 true。
+
+给定 target = 20，返回 false。
+************************************************************/
+
+using System;
+
+namespace LeetCode
+{
+    class Program
+    {
+        /// <summary>
+        /// 牛逼方法：从右上或坐下方开始，以右上为例，若当前数比target大数指针左移，若比target小则指针下移，若相等则输出，若移出矩阵则不存在
+        /// </summary>
+        /// <param name="nums"></param>
+        /// <returns></returns>
+        public static bool Solution(int[,] matrix, int target)
+        {
+            int m = matrix.GetLength(0);
+            int n = matrix.GetLength(1);
+            int col = 0;
+            int row = m - 1;
+            while (row >= 0 && col < n)
+            {
+                int value = matrix[row, col];
+                if (value < target)
+                {
+                    col++;
+                }
+                else if (value > target)
+                {
+                    row--;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// 垃圾方法：双层循环遍历，懒得写了
+        /// </summary>
+
+
+
+
+        /// <summary>
+        /// 案例测试
+        /// </summary>
+        static void Main(string[] args)
+        {
+            int[,] a = new int[,] {{ 1, 4, 7, 11, 15 },{ 2, 5, 8, 12, 19},{3, 6, 9, 16, 22},{10, 13, 14, 17, 24},{18, 21, 23, 26, 30}};
+            Console.WriteLine(Solution(a,20));
+            Console.ReadLine();
+        }
+    }
+}
