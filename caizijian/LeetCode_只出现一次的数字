@@ -30,7 +30,7 @@ namespace LeetCode
         //}
 
         /// <summary>
-        /// 一般方法：使用额外空间Dictionary，把数组的元素作为key，然后出现的次数为value，遍历数组，然后再遍历整个Dictionary集合，找出value为1的关键字
+        /// 垃圾方法：使用额外空间Dictionary，把数组的元素作为key，然后出现的次数为value，遍历数组，然后再遍历整个Dictionary集合，找出value为1的关键字
         /// </summary>
         /// <param name="nums"></param>
         /// <returns></returns>
