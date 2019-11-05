@@ -21,7 +21,7 @@ namespace LeetCode
     class Program
     {
         /// <summary>
-        /// 牛逼方法：从第一个数开始count=1，遇到相同的就加1，遇到不同的就减1，减到0就重新换个数开始计数，一直到最后还不为0的就是众数！
+        /// 牛逼方法：从第一个数开始count=1，遇到相同的就加1，遇到不同的就减1，减到0就重新换个数开始计数，能坚持到最后还不为0的就是众数！
         /// </summary>
         /// <param name="nums"></param>
         /// <returns></returns>
