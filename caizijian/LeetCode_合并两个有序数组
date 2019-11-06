@@ -1,0 +1,79 @@
+/************************************************************
+  合并两个有序数组
+给定两个有序整数数组 nums1 和 nums2，将 nums2 合并到 nums1 中，使得 num1 成为一个有序数组。
+
+说明:
+
+初始化 nums1 和 nums2 的元素数量分别为 m 和 n。
+你可以假设 nums1 有足够的空间（空间大小大于或等于 m + n）来保存 nums2 中的元素。
+示例:
+
+输入:
+nums1 = [1,2,3,0,0,0], m = 3
+nums2 = [2,5,6],       n = 3
+
+输出: [1,2,2,3,5,6]
+************************************************************/
+
+using System;
+
+namespace LeetCode
+{
+    class Program
+    {
+        /// <summary>
+        /// 思路：从两个数组最后的元素开始比较（nums1[m],nums2[n]）,大的堆到nums1后方，指针前移，小的不动。
+        /// </summary>
+        /// <param name="nums"></param>
+        /// <returns></returns>
+        public static int[] Solution(int[] nums1,int m,int[] nums2,int n)
+        {
+            int i = m-1;
+            int j = n-1;
+            int k = nums1.Length-1;//也等于n+m-1
+            while (k >= 0)
+            {
+                if (i < 0)//若i<0说明nums1中没有需要移动的元素了，直接把 nums2[j]放进去
+                {
+                    nums1[k--] = nums2[j--];
+                }
+                else if (j < 0)//若j<0则说明nums2没有元素了，合并完成，直接返回
+                {
+                    return nums1;
+                }
+                else if(nums1[i] >= nums2[j])
+                {
+                    nums1[k--] = nums1[i--];
+                }
+                else
+                {
+                    nums1[k--] = nums2[j--];
+                }
+            }
+            return nums1;
+        }
+
+        /// <summary>
+        /// 垃圾方法：从前向后比较，需要数组插入，懒得写了
+        /// </summary>
+
+
+
+
+        /// <summary>
+        /// 案例测试
+        /// </summary>
+        static void Main(string[] args)
+        {
+            int[] a = new int[] {1,2,3,0,0,0};
+            int[] b = new int[] {2,5,6 };
+            int[] result = Solution(a, 3, b, 3);
+            foreach(int i in result)
+            {
+                Console.WriteLine(i);
+            }
+            
+            Console.ReadLine();
+        }
+    }
+}
